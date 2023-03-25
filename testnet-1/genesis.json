@@ -337,7 +337,7 @@
           "initial_supply": "200000000",
           "max_supply": "1000000000",
           "mintable": true,
-          "owner": "did:fury:aa183rfa8tvtp6ax7jr7dfaf7ywv870sykxeau3ly"
+          "owner": "did:fury:aa1eqx2pf6ya3g4pdl0ez05x8vqvgc3f2scccpml6"
         }
       ],
       "burned_coins": []
