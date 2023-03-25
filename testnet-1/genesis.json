@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-03-25T23:07:24.775487355Z",
+  "genesis_time": "2023-03-25T23:44:17.104845269Z",
   "chain_id": "furytestnet-1",
   "initial_height": "1",
   "consensus_params": {
@@ -35,7 +35,7 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "did:fury:aa1eqx2pf6ya3g4pdl0ez05x8vqvgc3f2scccpml6",
+          "address": "did:fury:aa1df59j0sd3f3gshaptnxuz7p4ugdfytpz85pktr",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -52,7 +52,7 @@
       },
       "balances": [
         {
-          "address": "did:fury:aa1eqx2pf6ya3g4pdl0ez05x8vqvgc3f2scccpml6",
+          "address": "did:fury:aa1df59j0sd3f3gshaptnxuz7p4ugdfytpz85pktr",
           "coins": [
             {
               "denom": "ufury",
@@ -157,8 +157,8 @@
       "supers": [{
           "description": "Genesis Profiler 1",
           "account_type": "GENESIS",
-          "address": "did:fury:aa1eqx2pf6ya3g4pdl0ez05x8vqvgc3f2scccpml6",
-          "added_by": "did:fury:aa1eqx2pf6ya3g4pdl0ez05x8vqvgc3f2scccpml6"
+          "address": "did:fury:aa1df59j0sd3f3gshaptnxuz7p4ugdfytpz85pktr",
+          "added_by": "did:fury:aa1df59j0sd3f3gshaptnxuz7p4ugdfytpz85pktr"
       }]
     },
     "htlc": {
@@ -167,7 +167,7 @@
       },
       "htlcs": [],
       "supplies": [],
-      "previous_block_time": "2023-03-25T23:07:24.721123100Z"
+      "previous_block_time": "2023-03-25T23:44:17.052545895Z"
     },
     "ibc": {
       "client_genesis": {
