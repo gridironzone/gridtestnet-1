@@ -72,19 +72,19 @@
       "params": {
         "fee": "0.003000000000000000",
         "pool_creation_fee": {
-          "denom": "stake",
+          "denom": "ufury",
           "amount": "5000"
         },
         "tax_rate": "0.400000000000000000",
         "unilateral_liquidity_fee": "0.002000000000000000"
       },
-      "standard_denom": "stake",
+      "standard_denom": "ufury",
       "pool": [],
       "sequence": "1"
     },
     "crisis": {
       "constant_fee": {
-        "denom": "stake",
+        "denom": "ufury",
         "amount": "1000"
       }
     },
@@ -113,7 +113,7 @@
     "farm": {
       "params": {
         "pool_creation_fee": {
-          "denom": "stake",
+          "denom": "ufury",
           "amount": "5000"
         },
         "max_reward_categories": 2,
@@ -201,7 +201,7 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "stake",
+            "denom": "ufury",
             "amount": "10000000"
           }
         ],
@@ -290,7 +290,7 @@
         "inflation_base": "2000000000000000"
       },
       "params": {
-        "mint_denom": "stake",
+        "mint_denom": "ufury",
         "inflation": "0.040000000000000000"
       }
     },
@@ -317,7 +317,7 @@
         "min_deposit_multiple": "1000",
         "min_deposit": [
           {
-            "denom": "stake",
+            "denom": "ufury",
             "amount": "5000"
           }
         ],
@@ -326,7 +326,7 @@
         "complaint_retrospect": "1296000s",
         "arbitration_time_limit": "432000s",
         "tx_size_limit": "4000",
-        "base_denom": "stake",
+        "base_denom": "ufury",
         "restricted_service_fee_denom": false
       },
       "definitions": [],
@@ -351,7 +351,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "stake",
+        "bond_denom": "ufury",
         "min_commission_rate": "0.000000000000000000"
       },
       "last_total_power": "0",
