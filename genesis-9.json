@@ -120,19 +120,19 @@
       "params": {
         "fee": "0.003000000000000000",
         "pool_creation_fee": {
-          "denom": "fury",
+          "denom": "stake",
           "amount": "5000"
         },
         "tax_rate": "0.400000000000000000",
         "unilateral_liquidity_fee": "0.002000000000000000"
       },
-      "standard_denom": "fury",
+      "standard_denom": "stake",
       "pool": [],
       "sequence": "1"
     },
     "crisis": {
       "constant_fee": {
-        "denom": "fury",
+        "denom": "stake",
         "amount": "1000"
       }
     },
@@ -192,7 +192,7 @@
     "farm": {
       "params": {
         "pool_creation_fee": {
-          "denom": "fury",
+          "denom": "stake",
           "amount": "5000"
         },
         "max_reward_categories": 2,
@@ -220,7 +220,69 @@
     },
     "genutil": {
       "gen_txs": [
-      	{
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "GenesisGuardian-1",
+                  "identity": "Fanfury",
+                  "website": "",
+                  "security_contact": "",
+                  "details": "Argentina"
+                },
+                "commission": {
+                  "rate": "0.050000000000000000",
+                  "max_rate": "0.200000000000000000",
+                  "max_change_rate": "0.010000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "did:fury:iaa16ppaatampkl7g6skh25thtdh6jhx4w46evl0s7",
+                "validator_address": "did:fury:iva16ppaatampkl7g6skh25thtdh6jhx4w46va4qde",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "jyT7401r/rdRwEBftFeBoqnegY05RxQWPh7vTf29gM4="
+                },
+                "value": {
+                  "denom": "ufury",
+                  "amount": "10000000000"
+                }
+              }
+            ],
+            "memo": "94d233f64c44f933723bc34b20ee76382fadb470@10.160.0.7:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "AukxfsAJp6D8alE/XnTadpGgxeoK+WAAaUR6f5jcsTyQ"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas_limit": "200000",
+              "payer": "",
+              "granter": ""
+            },
+            "tip": null
+          },
+          "signatures": [
+            "RjEhykluAG4m31cD3aX9wAqJybLN3whvqcPwEI/6cX0WJl0154xgFW1wYsXi/Fxm2nAwsajdRe5CY05ylF6dWQ=="
+          ]
+        },
+        		{
 		  "body": {
 			"messages": [{
 			  "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
@@ -276,63 +338,7 @@
 		  },
 		  "signatures": ["QGl6J8RI90eBfyQ+y9x3NasclgTwcshCCy9+ru3z9c9p/feJ6403AXeddm5wy9TfQje3xRTq/sxv4nappBndaA=="]
 		},
-		{
-		  "body": {
-			"messages": [{
-			  "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
-			  "description": {
-				"moniker": "GenesisGuardian-1",
-				"identity": "Fanfury",
-				"website": "",
-				"security_contact": "",
-				"details": "Argentina"
-			  },
-			  "commission": {
-				"rate": "0.050000000000000000",
-				"max_rate": "0.200000000000000000",
-				"max_change_rate": "0.010000000000000000"
-			  },
-			  "min_self_delegation": "1",
-			  "delegator_address": "did:fury:iaa16ppaatampkl7g6skh25thtdh6jhx4w46evl0s7",
-			  "validator_address": "did:fury:iva16ppaatampkl7g6skh25thtdh6jhx4w46va4qde",
-			  "pubkey": {
-				"@type": "/cosmos.crypto.ed25519.PubKey",
-				"key": "jyT7401r/rdRwEBftFeBoqnegY05RxQWPh7vTf29gM4="
-			  },
-			  "value": {
-				"denom": "ufury",
-				"amount": "10000000000"
-			  }
-			}],
-			"memo": "94d233f64c44f933723bc34b20ee76382fadb470@10.160.0.7:26656",
-			"timeout_height": "0",
-			"extension_options": [],
-			"non_critical_extension_options": []
-		  },
-		  "auth_info": {
-			"signer_infos": [{
-			  "public_key": {
-				"@type": "/cosmos.crypto.secp256k1.PubKey",
-				"key": "AukxfsAJp6D8alE/XnTadpGgxeoK+WAAaUR6f5jcsTyQ"
-			  },
-			  "mode_info": {
-				"single": {
-				  "mode": "SIGN_MODE_DIRECT"
-				}
-			  },
-			  "sequence": "0"
-			}],
-			"fee": {
-			  "amount": [],
-			  "gas_limit": "200000",
-			  "payer": "",
-			  "granter": ""
-			},
-			"tip": null
-		  },
-		  "signatures": ["RjEhykluAG4m31cD3aX9wAqJybLN3whvqcPwEI/6cX0WJl0154xgFW1wYsXi/Fxm2nAwsajdRe5CY05ylF6dWQ=="]
-		},
-		{
+				{
 		  "body": {
 			"messages": [{
 			  "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
@@ -388,7 +394,7 @@
 		  },
 		  "signatures": ["ADy03lRM8mpHH81jC7krVuG1U4q5q2vYuhSOXoLuSE9YfPHWKbA/OpswnQgyXqFaqAf2UOh00pFxxdGy2vMDsw=="]
 		},
-		{
+				{
 		  "body": {
 			"messages": [{
 			  "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
@@ -444,7 +450,7 @@
 		  },
 		  "signatures": ["KYAnuTCgUyntHrkUkPsQqaGLq1wAj6RbP+XwvtThZKEW18zbU2nSaOLZwDuiLEPOBAKNr9cVVwsfDDS/yozHjg=="]
 		}
-	  ]
+      ]
     },
     "gov": {
       "starting_proposal_id": "1",
@@ -454,7 +460,7 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "fury",
+            "denom": "stake",
             "amount": "10000000"
           }
         ],
@@ -538,7 +544,7 @@
         "inflation_base": "2000000000000000"
       },
       "params": {
-        "mint_denom": "fury",
+        "mint_denom": "stake",
         "inflation": "0.040000000000000000"
       }
     },
@@ -565,7 +571,7 @@
         "min_deposit_multiple": "1000",
         "min_deposit": [
           {
-            "denom": "fury",
+            "denom": "stake",
             "amount": "5000"
           }
         ],
@@ -574,7 +580,7 @@
         "complaint_retrospect": "1296000s",
         "arbitration_time_limit": "432000s",
         "tx_size_limit": "4000",
-        "base_denom": "fury",
+        "base_denom": "stake",
         "restricted_service_fee_denom": false
       },
       "definitions": [],
@@ -599,7 +605,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "fury",
+        "bond_denom": "stake",
         "min_commission_rate": "0.000000000000000000"
       },
       "last_total_power": "0",
