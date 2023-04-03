@@ -1,3 +1,13 @@
+#!/usr/bin/env bash
+
+# Note: install dependencies 
+
+sudo apt update
+sudo apt upgrade
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install git build-essential ufw curl jq snapd wget --yes
+
 
 # Note: install go@v1.19.1
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
