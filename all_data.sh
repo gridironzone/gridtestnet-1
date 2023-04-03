@@ -1,13 +1,3 @@
-#!/usr/bin/env bash
-
-# Must be run from root path inside fury-blockchain for source to work
-
-# Note: update all dependencies
-sudo apt update
-sudo apt upgrade
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 # Note: install go@v1.19.1
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
@@ -39,8 +29,13 @@ NODE="(fury tendermint show-node-id)"
 
 fury init gridiron-1 --chain-id $CHAIN_ID --staking-bond-denom utfury
 
+
 # Note: Download the genesis file
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/gridironzone/gridtestnet-1/master/testnet-1/genesis.json
+
+# Note: Add an account
+yes $PASSWORD | fury keys add gridiron
+
 
 # Set staking token (both bond_denom and mint_denom)
 STAKING_TOKEN="utfury"
