@@ -151,7 +151,7 @@ echo "
 ###                                											###
 ###                                											###
  	                      You're all set!!!!						
-				The Gridiron Chain will now be started!!         
+		The Gridiron Chain will now be started!!         
 ###                                											###
 ###                                											###
 ###                                											###
