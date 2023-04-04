@@ -45,7 +45,7 @@ echo "----------------------installing fury---------------"
 git clone -b furyhub-1 https://github.com/fanfury-sports/fanfury.git $FURY_SRC
 cd $FURY_SRC
 make build
-mv fury $FURY_HOME/cosmovisor/genesis/bin/fury
+mv /build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 echo "-------------------installing cosmovisor-----------------------"
 git clone -b $COSMOVISOR_VERSION https://github.com/onomyprotocol/onomy-sdk $COSMOVISOR_SRC
