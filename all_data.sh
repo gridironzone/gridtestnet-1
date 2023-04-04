@@ -1,72 +1,80 @@
+
 #!/usr/bin/env bash
 
-PASSWORD="FuryT3sTN#T"
+rm -rf ~/.fury
 
-fury init local --chain-id pandora-4
+PASSWORD="F@nfuryG#n3sis@fury"
+GAS_PRICES="0.000025utfury"
+CHAIN_ID="export"
+NODE="(fury tendermint show-node-id)"
 
-echo "Backing up existing genesis file..."
-cp "$HOME"/.fury/config/genesis.json "$HOME"/.fury/config/genesis.json.backup
+fury init gridiron-1 --chain-id $CHAIN_ID --staking-bond-denom utfury
 
-echo "Copying new genesis file to $HOME/.fury/config/genesis.json..."
-cp genesis.json "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury keys add genArgentina
-yes $PASSWORD | fury keys add genBrazil
-yes $PASSWORD | fury keys add genBrooklyn-Nets
-yes $PASSWORD | fury keys add genIndia-Football
-yes $PASSWORD | fury keys add genLA-Lakers
-yes $PASSWORD | fury keys add genNY-Yankees
-yes $PASSWORD | fury keys add genSF-Giants
+# Note: Download the genesis file
+curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/gridironzone/gridtestnet-1/master/testnet-1/genesis.json
 
-# Note: important to add 'genBrazil' as a genesis-account since this is the chain's validator
-yes $PASSWORD | fury add-genesis-account "$(fury keys show genArgentina -a)" 1000000000000ufury,1000000000000ufusd
-yes $PASSWORD | fury add-genesis-account "$(fury keys show genBrazil -a)" 1000000000000ufury
-yes $PASSWORD | fury add-genesis-account "$(fury keys show genBrooklyn-Nets -a)" 1000000000000ufury
+# Note: Add an account
+yes $PASSWORD | fury keys add gridiron
 
 
 # Set staking token (both bond_denom and mint_denom)
-sed -i -e 's/stake/ufury/g' /home/adrian/.fury/config/genesis.json
+STAKING_TOKEN="utfury"
+FROM="\"bond_denom\": \"stake\""
+TO="\"bond_denom\": \"$STAKING_TOKEN\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
+FROM="\"mint_denom\": \"stake\""
+TO="\"mint_denom\": \"$STAKING_TOKEN\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
+# Set node3 token (both for gov min deposit and crisis constant node3)
+FEE_TOKEN="utfury"
+FROM="\"stake\""
+TO="\"$FEE_TOKEN\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
 # Set reserved bond tokens
-RESERVED_BOND_TOKENS=""  # example: " \"abc\", \"def\", \"ghi\" "
+RESERVED_BOND_TOKENS="" # example: " \"abc\", \"def\", \"ghi\" "
 FROM="\"reserved_bond_tokens\": \[\]"
 TO="\"reserved_bond_tokens\": \[$RESERVED_BOND_TOKENS\]"
-sed -i -e 's/$FROM/$TO/g' "$HOME"/.fury/config/genesis.json
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-# Set min-gas-prices (using genIndia-Football token)
+# Set min-gas-prices (using node3 token)
 FROM="minimum-gas-prices = \"\""
-TO="minimum-gas-prices = \"0.025$FEE_TOKEN\""
-sed -i -e 's/$FROM/$TO/g' "$HOME"/.fury/config/app.toml
+TO="minimum-gas-prices = \"0.000002$FEE_TOKEN\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/app.toml
 
-# TODO: config missing from new version (REF: https://github.com/cosmos/cosmos-sdk/issues/8529)
-#fury config chain-id pandora-4
-#fury config output json
-#fury config indent true
-#fury config trust-node true
+MAX_VOTING_PERIOD="90s" # example: "172800s"
+FROM="\"voting_period\": \"172800s\""
+TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-fury gentx genBrazil 1000000ufury --chain-id pandora-4
-
+yes $PASSWORD | fury gentx node0 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
-# Enable REST API (assumed to be at line 104 of app.toml)
+# Enable REST API
 FROM="enable = false"
 TO="enable = true"
-sed -i -e '104s/$FROM/$TO/g' "$HOME"/.fury/config/app.toml
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/app.toml
 
-# Enable Swagger docs (assumed to be at line 107 of app.toml)
+# Enable Swagger docs
 FROM="swagger = false"
 TO="swagger = true"
-sed -i -e '107s/$FROM/$TO/g' "$HOME"/.fury/config/app.toml
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/app.toml
 
-# Uncomment the below to broadcast node RPC endpoint
+# Broadcast node RPC endpoint
 FROM="laddr = \"tcp:\/\/127.0.0.1:26657\""
 TO="laddr = \"tcp:\/\/0.0.0.0:26657\""
-sed -i -e '107s/$FROM/$TO/g' "$HOME"/.fury/config/app.toml
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/config.toml
 
-# Uncomment the below to set timeouts to 1s for shorter block times
-sed -i -e 's/timeout_commit = "5s"/timeout_commit = "1s"/g' "$HOME"/.fury/config/config.toml
-sed -i -e 's/timeout_propose = "3s"/timeout_propose = "1s"/g' "$HOME"/.fury/config/config.toml
+# Set timeouts to 1s for shorter block times
+sed -i -e "s/timeout_commit = "5s"/timeout_commit = "1s"/g" "$HOME"/.fury/config/config.toml
+sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/config/config.toml
 
-fury start --pruning "nothing"
+yes $PASSWORD | fury keys export gridiron
+
+echo "fury will now be started"
+
+fury start
+
