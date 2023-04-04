@@ -9,6 +9,7 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 # Note: Download go@1.19.1
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+
 source /home/adrian/.bashrc
 
 # Note: Download Homebrew
@@ -16,6 +17,8 @@ source /home/adrian/.bashrc
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# Note: Download GCC
+brew install gcc
 
 # Note: Download and install the Gridiron Binary
 git clone https://github.com/fanfury-sports/fanfury -b fanfury
@@ -36,8 +39,31 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 # Note: Download the genesis file
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
-# Note: Add an account
-yes $PASSWORD | fury keys import gridiron
+# Note: Importan account
+
+yes $PASSWORD | fury keys import GridironGuardian-2 ~/keys/GridironGuardian-2.key
+yes $PASSWORD | fury keys import genArgentina ~/keys/genArgentina.key
+yes $PASSWORD | fury keys import genBrazil ~/keys/genBrazil.key
+yes $PASSWORD | fury keys import genBrooklyn-Nets ~/keys/genBrooklyn.key
+yes $PASSWORD | fury keys import genBuffallo-Bills ~/keys/genBuffallo.key
+yes $PASSWORD | fury keys import genIndia-Football ~/keys/genIndia.key
+yes $PASSWORD | fury keys import genLA-Lakers ~/keys/genLA.key
+yes $PASSWORD | fury keys import genNY-Yankees ~/keys/genNY.key
+yes $PASSWORD | fury keys import genPSG ~/keys/genPSG.key
+yes $PASSWORD | fury keys import genSF-Giants genSF.key
+yes $PASSWORD | fury keys import node0 ~/keys/node0.key
+yes $PASSWORD | fury keys import node1 ~/keys/node1.key
+yes $PASSWORD | fury keys import node2 ~/keys/node2.key
+yes $PASSWORD | fury keys import node3 ~/keys/node3.key
+yes $PASSWORD | fury keys import node4 ~/keys/node4.key
+yes $PASSWORD | fury keys import node5 ~/keys/node5.key
+yes $PASSWORD | fury keys import node6 ~/keys/node6.key
+yes $PASSWORD | fury keys import node7 ~/keys/node7.key
+yes $PASSWORD | fury keys import node8 ~/keys/node8.key
+yes $PASSWORD | fury keys import sentry1 ~/keys/sentry1.key
+yes $PASSWORD | fury keys import sentry2 ~/keys/sentry2.key
+yes $PASSWORD | fury keys import sentry3 ~/keys/sentry3.key
+yes $PASSWORD | fury keys import sentry4 ~/keys/sentry4.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -94,9 +120,8 @@ sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_commit = "5s"/timeout_commit = "1s"/g" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/config/config.toml
 
-yes $PASSWORD | fury keys export gridiron
 
-echo "fury will now be started"
+echo "The Gridiron Chain can now be started!! Congratulations!!"
 
-fury start
+
 
