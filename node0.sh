@@ -5,8 +5,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt install git build-essential dnf subscription-managercurl nano ca-certificates tar git jq gcc-c++ gcc-toolset-9 openssl-devel musl-devel musl-gcc gmp-devel perl python3 moreutils wget nodejs make hostname procps-ng pass libsecret pinentry crudini cmake --yes
-
+sudo apt install git build-essential ufw curl jq snapd wget dnf --yes
 
 #Setting up constants
 FURY_HOME=$HOME/.fury
