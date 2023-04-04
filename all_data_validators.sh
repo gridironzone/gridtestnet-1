@@ -131,5 +131,5 @@ yes $PASSWORD | fury keys export sentry2
 yes $PASSWORD | fury keys export sentry3
 yes $PASSWORD | fury keys export sentry4
 
-# fury start --pruning "nothing"
 echo "You're all set!!!!'"
+fury start --pruning "nothing"
