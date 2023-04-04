@@ -1,3 +1,13 @@
+#!/usr/bin/env bash
+
+echo "-----------setting environment settings---------------"
+sudo apt update
+sudo apt upgrade
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install git build-essential dnf subscription-managercurl nano ca-certificates tar git jq gcc-c++ gcc-toolset-9 openssl-devel musl-devel musl-gcc gmp-devel perl python3 moreutils wget nodejs make hostname procps-ng pass libsecret pinentry crudini cmake --yes
+
+
 #Setting up constants
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury
@@ -6,6 +16,7 @@ COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
 FURY_VERSION="v1.0.1"
 COSMOVISOR_VERSION="cosmovisor-v1.0.1"
 
+echo "-----------setting constants---------------"
 mkdir -p $FURY_HOME
 mkdir -p $FURY_HOME/src
 mkdir -p $FURY_HOME/bin
