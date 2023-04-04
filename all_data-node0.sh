@@ -9,6 +9,7 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 # Note: Download go@1.19.1
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+cd
 source /home/adrian/.bashrc
 
 # Note: Download Homebrew

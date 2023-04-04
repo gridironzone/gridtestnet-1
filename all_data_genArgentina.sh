@@ -9,6 +9,7 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 # Note: Download go@1.19.1
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+cd 
 source /home/adrian/.bashrc
 
 # Note: Download Homebrew
@@ -16,12 +17,6 @@ source /home/adrian/.bashrc
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-
-# Note: Download the keys files
-git clone https://github.com/gridironzone/gridtestnet-1
-cd gridtestnet-1/testnet-1
-mv keys ~/
-cd 
 
 # Note: Download and install the Gridiron Binary
 git clone https://github.com/fanfury-sports/fanfury -b fanfury
@@ -41,6 +36,12 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 
 # Note: Download the genesis file
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
+
+# Note: Download the keys files
+git clone https://github.com/gridironzone/gridtestnet-1
+cd gridtestnet-1/testnet-1
+mv keys ~/
+cd 
 
 # Note: Add an account
 yes $PASSWORD | fury keys import genArgentina ~/keys/genArgentina.key
