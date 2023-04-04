@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2023-04-03T21:32:24.434337015Z",
-  "chain_id": "gridiron_4200-1001",
+  "genesis_time": "2023-04-04T18:01:36.003699457Z",
+  "chain_id": "gridiron_4200-3",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -35,21 +35,154 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "did:fury:iaa1ptnz9tapcx2gxc0u7xxc2pv359pq0zap0zu8my",
+          "address": "did:fury:iaa18gxfa4fhcskyphad3dzyjtn380c0rv3mezrrfj",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "did:fury:iaa1lnzd57lnuywr8xxq48pfn53leshr30shw83k5d",
+          "address": "did:fury:iaa1ulr0uakt3y50d7ppv3q0zy6uecwrwam2hvruy3",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "did:fury:iaa14v3fegwzcv63srpw47648w3h3rf05fh4nn2y2s",
+          "address": "did:fury:iaa1gtsz7mzee899uag3yx9z9g6jqe5pyc0wjxpg5l",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1p654nh4pqp4tjgjwdgfz898n7cg6kmk0vcnsr9",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1zyawulqlcrea3ys4avj7ay5yd6vgkau50t6rjx",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1k8gjqa88etw3v3000np2xt2da5nyp4w66d9ajy",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1pmnsy78qqkc48gydegrc9u80mw4qh42jzf8d6q",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1yyl4jlcvu64ayk23jmt3reh8ns9vjln8gsk2nk",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1yh02nj047z4lwde6dq83ju5vwsgexjzlqrkwg3",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1chgm72lxmednxzc37smq2fph7fk8kt8jngnp4z",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1vsqdy5gqjuf4dszvzmgh72t7mhft4s2zjg07fc",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1qevv63u0upymj4ndcs7e4zkgv9444ymw5zvnwv",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa14v9hgf3kndmgzjnxwj2r7trkn2gyppsg3wm6gk",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa18egs4p4878xjm4ve5yjypfh5epafs9rpw90p72",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1k259fe4tmpwd9mj44d3fluzxcctu5s909nyzl5",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1wz3xqxnk0vdywggz803wcepygg3qtsr4hw24jd",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1k7xh73axvm83l5kx8k5sdcsfkqaqwycqunam2x",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1ntfgfsf4gsysz4klp0yfgmtdmrhurj2wphdxup",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1t0fmcc627dh7yz90u6l63nfsw4lmzfj962u0gq",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1cuv43pygcccff96zjyu9y78az08kyrj0g05luz",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1tg6yduqtm7eqkr5mvwsqul3u8nrt5qq3rs9gns",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "did:fury:iaa1n7ur7qcmuyx3usx5v4k9mxhwlusc8l529k07ap",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -66,57 +199,200 @@
       },
       "balances": [
         {
-          "address": "did:fury:iaa1ptnz9tapcx2gxc0u7xxc2pv359pq0zap0zu8my",
+          "address": "did:fury:iaa1qevv63u0upymj4ndcs7e4zkgv9444ymw5zvnwv",
           "coins": [
             {
-              "denom": "res",
-              "amount": "1000000000000"
-            },
-            {
-              "denom": "rez",
-              "amount": "1000000000000"
-            },
-            {
               "denom": "utfury",
-              "amount": "1000000000000"
-            },
-            {
-              "denom": "uxgbp",
-              "amount": "1000000000000"
+              "amount": "100000000"
             }
           ]
         },
         {
-          "address": "did:fury:iaa14v3fegwzcv63srpw47648w3h3rf05fh4nn2y2s",
+          "address": "did:fury:iaa1p654nh4pqp4tjgjwdgfz898n7cg6kmk0vcnsr9",
           "coins": [
             {
-              "denom": "res",
-              "amount": "1000000000000"
-            },
-            {
-              "denom": "rez",
-              "amount": "1000000000000"
-            },
-            {
               "denom": "utfury",
-              "amount": "1000000000000"
+              "amount": "30537820000"
             }
           ]
         },
         {
-          "address": "did:fury:iaa1lnzd57lnuywr8xxq48pfn53leshr30shw83k5d",
+          "address": "did:fury:iaa1pmnsy78qqkc48gydegrc9u80mw4qh42jzf8d6q",
           "coins": [
             {
-              "denom": "res",
-              "amount": "1000000000000"
-            },
-            {
-              "denom": "rez",
-              "amount": "1000000000000"
-            },
+              "denom": "utfury",
+              "amount": "200066960000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1zyawulqlcrea3ys4avj7ay5yd6vgkau50t6rjx",
+          "coins": [
             {
               "denom": "utfury",
-              "amount": "1000000000000"
+              "amount": "25000000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1yyl4jlcvu64ayk23jmt3reh8ns9vjln8gsk2nk",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "23264580000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1yh02nj047z4lwde6dq83ju5vwsgexjzlqrkwg3",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa18gxfa4fhcskyphad3dzyjtn380c0rv3mezrrfj",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa18egs4p4878xjm4ve5yjypfh5epafs9rpw90p72",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1gtsz7mzee899uag3yx9z9g6jqe5pyc0wjxpg5l",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "120000020000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1tg6yduqtm7eqkr5mvwsqul3u8nrt5qq3rs9gns",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1t0fmcc627dh7yz90u6l63nfsw4lmzfj962u0gq",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1vsqdy5gqjuf4dszvzmgh72t7mhft4s2zjg07fc",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1wz3xqxnk0vdywggz803wcepygg3qtsr4hw24jd",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1ntfgfsf4gsysz4klp0yfgmtdmrhurj2wphdxup",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1n7ur7qcmuyx3usx5v4k9mxhwlusc8l529k07ap",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa14v9hgf3kndmgzjnxwj2r7trkn2gyppsg3wm6gk",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1k8gjqa88etw3v3000np2xt2da5nyp4w66d9ajy",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "132572320000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1k259fe4tmpwd9mj44d3fluzxcctu5s909nyzl5",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1k7xh73axvm83l5kx8k5sdcsfkqaqwycqunam2x",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1chgm72lxmednxzc37smq2fph7fk8kt8jngnp4z",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1cuv43pygcccff96zjyu9y78az08kyrj0g05luz",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
+          "address": "did:fury:iaa1ulr0uakt3y50d7ppv3q0zy6uecwrwam2hvruy3",
+          "coins": [
+            {
+              "denom": "utfury",
+              "amount": "100000000000"
             }
           ]
         }
@@ -132,19 +408,19 @@
       "params": {
         "fee": "0.003000000000000000",
         "pool_creation_fee": {
-          "denom": "utfury",
+          "denom": "stake",
           "amount": "5000"
         },
         "tax_rate": "0.400000000000000000",
         "unilateral_liquidity_fee": "0.002000000000000000"
       },
-      "standard_denom": "utfury",
+      "standard_denom": "stake",
       "pool": [],
       "sequence": "1"
     },
     "crisis": {
       "constant_fee": {
-        "denom": "utfury",
+        "denom": "stake",
         "amount": "1000"
       }
     },
@@ -204,7 +480,7 @@
     "farm": {
       "params": {
         "pool_creation_fee": {
-          "denom": "utfury",
+          "denom": "stake",
           "amount": "5000"
         },
         "max_reward_categories": 2,
@@ -238,7 +514,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "gridiron-1",
+                  "moniker": "gridiron",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -250,11 +526,11 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "did:fury:iaa1ptnz9tapcx2gxc0u7xxc2pv359pq0zap0zu8my",
-                "validator_address": "did:fury:iva1ptnz9tapcx2gxc0u7xxc2pv359pq0zap6nkgxr",
+                "delegator_address": "did:fury:iaa1gtsz7mzee899uag3yx9z9g6jqe5pyc0wjxpg5l",
+                "validator_address": "did:fury:iva1gtsz7mzee899uag3yx9z9g6jqe5pyc0w8ht8fc",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "B9pF0SJ+RnCrH2f7eiLKd7RNY5Yq2stVXIlF8swk0mQ="
+                  "key": "ldhd21wB76aaflBHVlwFU0jahj7UGR+LELxZqWDDaGQ="
                 },
                 "value": {
                   "denom": "utfury",
@@ -262,7 +538,7 @@
                 }
               }
             ],
-            "memo": "2461f0c5da60caab7f2cb3e51e893f01d17b1104@10.128.15.207:26656",
+            "memo": "ee9275ea16b03fd0c2e1480a0a73c1f85fd81e19@10.128.15.207:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -272,7 +548,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "A1DTWVAyUjchhXjGTl9ct7F3AGkGJfNjGnUV0jmvefWj"
+                  "key": "Ap67aAwRr5DJU06YPd4ZKSLYmekLH5GK/AZkt02iydP0"
                 },
                 "mode_info": {
                   "single": {
@@ -291,7 +567,7 @@
             "tip": null
           },
           "signatures": [
-            "OHx3OaoYYiRufEOq8XXrRC8O+XOwRmX07+Nf+P1UXChZCHXUCxgxGHbsbVPIvAoyvzNMJBzJA8v89SjQWQY9kQ=="
+            "ysYugUp3IAEavfk/LyaFYLAPJz2NbhH/7SDCsjJ5mMZuB3ymiTDb9eYbZtVgShKYCwnoDBvygWaA2RrzlT2oUw=="
           ]
         }
       ]
@@ -304,14 +580,14 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "utfury",
+            "denom": "stake",
             "amount": "10000000"
           }
         ],
         "max_deposit_period": "172800s"
       },
       "voting_params": {
-        "voting_period": "90s"
+        "voting_period": "172800s"
       },
       "tally_params": {
         "quorum": "0.334000000000000000",
@@ -328,7 +604,7 @@
       },
       "htlcs": [],
       "supplies": [],
-      "previous_block_time": "2023-04-03T21:32:24.392684812Z"
+      "previous_block_time": "2023-04-04T18:01:35.966083139Z"
     },
     "ibc": {
       "client_genesis": {
@@ -415,7 +691,7 @@
         "min_deposit_multiple": "1000",
         "min_deposit": [
           {
-            "denom": "utfury",
+            "denom": "stake",
             "amount": "5000"
           }
         ],
@@ -424,7 +700,7 @@
         "complaint_retrospect": "1296000s",
         "arbitration_time_limit": "432000s",
         "tx_size_limit": "4000",
-        "base_denom": "utfury",
+        "base_denom": "stake",
         "restricted_service_fee_denom": false
       },
       "definitions": [],
