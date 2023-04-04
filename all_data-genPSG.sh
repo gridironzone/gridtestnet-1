@@ -17,6 +17,12 @@ source /home/adrian/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
+# Note: Download the keys files
+git clone https://github.com/gridironzone/gridtestnet-1
+cd gridtestnet-1/testnet-1
+mv keys ~/
+cd 
+
 # Note: Download and install the Gridiron Binary
 git clone https://github.com/fanfury-sports/fanfury -b fanfury
 cd fanfury
@@ -37,7 +43,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import GridironGuardian-2 ~/keys/GridironGuardian-2.key
+yes $PASSWORD | fury keys import genPSG ~/keys/genPSG.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -71,7 +77,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx GridironGuardian-2 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx genPSG 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 

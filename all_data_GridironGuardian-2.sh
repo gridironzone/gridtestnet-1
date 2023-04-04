@@ -17,6 +17,12 @@ source /home/adrian/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
+# Note: Download the keys files
+git clone https://github.com/gridironzone/gridtestnet-1
+cd gridtestnet-1/testnet-1
+mv keys ~/
+cd 
+
 # Note: Download and install the Gridiron Binary
 git clone https://github.com/fanfury-sports/fanfury -b fanfury
 cd fanfury

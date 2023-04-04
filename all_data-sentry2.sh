@@ -17,6 +17,12 @@ source /home/adrian/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
+# Note: Download the keys files
+git clone https://github.com/gridironzone/gridtestnet-1
+cd gridtestnet-1/testnet-1
+mv keys ~/
+cd 
+
 # Note: Download and install the Gridiron Binary
 git clone https://github.com/fanfury-sports/fanfury -b fanfury
 cd fanfury
@@ -37,7 +43,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import GridironGuardian-2 ~/keys/GridironGuardian-2.key
+yes $PASSWORD | fury keys import sentry1 ~/keys/sentry1.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -49,7 +55,7 @@ FROM="\"mint_denom\": \"stake\""
 TO="\"mint_denom\": \"$STAKING_TOKEN\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-# Set node3 token (both for gov min deposit and crisis constant node3)
+# Set sentry1 token (both for gov min deposit and crisis constant sentry1)
 FEE_TOKEN="utfury"
 FROM="\"stake\""
 TO="\"$FEE_TOKEN\""
@@ -61,7 +67,7 @@ FROM="\"reserved_bond_tokens\": \[\]"
 TO="\"reserved_bond_tokens\": \[$RESERVED_BOND_TOKENS\]"
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-# Set min-gas-prices (using node3 token)
+# Set min-gas-prices (using sentry1 token)
 FROM="minimum-gas-prices = \"\""
 TO="minimum-gas-prices = \"0.000002$FEE_TOKEN\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/app.toml
@@ -71,7 +77,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx GridironGuardian-2 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx sentry1 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
