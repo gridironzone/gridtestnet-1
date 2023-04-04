@@ -63,7 +63,13 @@ yes $PASSWORD | fury add-genesis-account "$(fury keys show sentry4 -a)" 10000000
 
 
 # Set staking token (both bond_denom and mint_denom)
-sed -i -e 's/stake/utfury/g' /home/adrian/.fury/config/genesis.json
+STAKING_TOKEN="utfury"
+FROM="\"bond_denom\": \"stake\""
+TO="\"bond_denom\": \"$STAKING_TOKEN\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
+FROM="\"mint_denom\": \"stake\""
+TO="\"mint_denom\": \"$STAKING_TOKEN\""
+sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
 
 # Set reserved bond tokens
@@ -131,5 +137,34 @@ yes $PASSWORD | fury keys export sentry2
 yes $PASSWORD | fury keys export sentry3
 yes $PASSWORD | fury keys export sentry4
 
-echo "You're all set!!!!'"
-fury start --pruning "nothing"
+
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+                       echo "You're all set!!!!"						
+			echo "The Gridiron Chain will now be started!!"         
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###                                											###
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+
+
+

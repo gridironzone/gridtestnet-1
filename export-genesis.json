@@ -1,0 +1,33 @@
+panic: UnmarshalJSON cannot decode empty bytes
+
+goroutine 1 [running]:
+github.com/cosmos/cosmos-sdk/x/params/types.Subspace.Get({{_, _}, _, {_, _}, {_, _}, {_, _, _}, ...}, ...)
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/x/params/types/subspace.go:110 +0x204
+github.com/cosmos/cosmos-sdk/x/params/types.Subspace.GetParamSet({{_, _}, _, {_, _}, {_, _}, {_, _, _}, ...}, ...)
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/x/params/types/subspace.go:239 +0x114
+github.com/cosmos/cosmos-sdk/x/auth/keeper.AccountKeeper.GetParams(...)
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/x/auth/keeper/params.go:15
+github.com/cosmos/cosmos-sdk/x/auth/keeper.AccountKeeper.ExportGenesis({{0x108051148, 0x14001534390}, {0x108085810, 0x14000d06320}, {{0x108085810, 0x14000d06320}, 0x14000010250, {0x108051148, 0x14001534400}, {0x108051198, ...}, ...}, ...}, ...)
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/x/auth/keeper/genesis.go:31 +0xec
+github.com/cosmos/cosmos-sdk/x/auth.AppModule.ExportGenesis({{}, {{0x108051148, 0x14001534390}, {0x108085810, 0x14000d06320}, {{0x108085810, 0x14000d06320}, 0x14000010250, {0x108051148, 0x14001534400}, ...}, ...}, ...}, ...)
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/x/auth/module.go:151 +0x64
+github.com/cosmos/cosmos-sdk/types/module.(*Manager).ExportGenesis(_, {{0x108070358, 0x1400012e008}, {0x108086300, 0x14001507e40}, {{0x0, 0x0}, {0x0, 0x0}, 0x0, ...}, ...}, ...)
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/types/module/module.go:348 +0xd0
+github.com/furynet/furyhub/app.(*FuryApp).ExportAppStateAndValidators(0x140005e4600, 0x0, {0x10986f1c0, 0x0, 0x0})
+	/Users/adrianross/furynet/furyhub/app/export.go:37 +0x164
+github.com/furynet/furyhub/cmd/fury/cmd.appCreator.appExport({{{0x108078cf8, 0x14001530198}, {0x10808e818, 0x14000d06320}, {0x108083060, 0x14001792540}, 0x14000010250}}, {0x108071ac0, 0x140015bb500}, {0x108086af8, ...}, ...)
+	/Users/adrianross/furynet/furyhub/cmd/fury/cmd/root.go:301 +0x184
+github.com/cosmos/cosmos-sdk/server.ExportCmd.func1(0x14001008000, {0x10986f1c0?, 0x0?, 0x0?})
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/server/export.go:70 +0x308
+github.com/spf13/cobra.(*Command).execute(0x14001008000, {0x10986f1c0, 0x0, 0x0})
+	/Users/adrianross/go/pkg/mod/github.com/spf13/cobra@v1.6.1/command.go:916 +0x5c8
+github.com/spf13/cobra.(*Command).ExecuteC(0x14000e23b00)
+	/Users/adrianross/go/pkg/mod/github.com/spf13/cobra@v1.6.1/command.go:1044 +0x35c
+github.com/spf13/cobra.(*Command).Execute(...)
+	/Users/adrianross/go/pkg/mod/github.com/spf13/cobra@v1.6.1/command.go:968
+github.com/spf13/cobra.(*Command).ExecuteContext(...)
+	/Users/adrianross/go/pkg/mod/github.com/spf13/cobra@v1.6.1/command.go:961
+github.com/cosmos/cosmos-sdk/server/cmd.Execute(0x106c40428?, {0x0, 0x0}, {0x140015faa08, 0x17})
+	/Users/adrianross/go/pkg/mod/github.com/cosmos/cosmos-sdk@v0.46.9/server/cmd/execute.go:36 +0x1a8
+main.main()
+	/Users/adrianross/furynet/furyhub/cmd/fury/main.go:17 +0x38

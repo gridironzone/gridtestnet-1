@@ -1,33 +1,11 @@
-#!/usr/bin/env bash
-
-# Note: install dependencies 
-
-sudo apt update
-sudo apt upgrade
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt install git build-essential ufw curl jq snapd wget --yes
-
-
-# Note: install go@v1.19.1
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
-
-
-# Note: Download and install the Gridiron Zone Binary
-git clone https://github.com/furynet/furyhub -b genesis 
-cd furyhub
-make install
-cd ..
-
 
 #!/usr/bin/env bash
 
-PASSWORD="F@nfuryG#n3sis@fury"
 rm -rf ~/.fury
 
 PASSWORD="F@nfuryG#n3sis@fury"
 GAS_PRICES="0.000025utfury"
-CHAIN_ID="gridiron_4200-1001"
+CHAIN_ID="export"
 NODE="(fury tendermint show-node-id)"
 
 fury init gridiron-1 --chain-id $CHAIN_ID --staking-bond-denom utfury
@@ -63,7 +41,7 @@ sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
 # Set min-gas-prices (using node3 token)
 FROM="minimum-gas-prices = \"\""
-TO="minimum-gas-prices = \"0.025$FEE_TOKEN\""
+TO="minimum-gas-prices = \"0.000002$FEE_TOKEN\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/app.toml
 
 MAX_VOTING_PERIOD="90s" # example: "172800s"
@@ -96,6 +74,7 @@ sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/conf
 
 yes $PASSWORD | fury keys export gridiron
 
-"fury is now ready"
-# fury start --pruning "nothing" --log_level "trace" --trace
+echo "fury will now be started"
+
+fury start
 
