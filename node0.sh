@@ -25,25 +25,6 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 sudo apt-get -y install dnf
-sudo apt install curl nano ca-certificates tar git jq gcc-c++ gcc-toolset-9 openssl-devel musl-devel musl-gcc gmp-devel perl python3 moreutils wget nodejs make hostname procps-ng pass libsecret pinentry crudini cmake
-
-
-
-
-echo "-----------installing dependencies---------------"
-sudo dnf -y update
-sudo dnf -y copr enable ngompa/musl-libc
-sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-sudo dnf -y install subscription-manager
-sudo subscription-manager config --rhsm.manage_repos=1
-sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
-sudo dnf makecache --refresh
-sudo dnf -y --skip-broken install curl nano ca-certificates tar git jq gcc-c++ gcc-toolset-9 openssl-devel musl-devel musl-gcc gmp-devel perl python3 moreutils wget nodejs make hostname procps-ng pass libsecret pinentry crudini cmake
-
-gcc_source="/opt/rh/gcc-toolset-9/enable"
-if test -f $gcc_source; then
-   source gcc_source
-fi
 
 set -eu
 
@@ -55,6 +36,14 @@ export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
+
+echo "--------------installing homebrew---------------------------"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+brew install gcc
+
 
 echo "----------------------installing fury---------------"
 git clone -b furyhub-1 https://github.com/fanfury-sports/fanfury.git $FURY_SRC
