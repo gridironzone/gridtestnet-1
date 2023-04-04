@@ -5,17 +5,17 @@ rm -rf ~/.fury
 
 PASSWORD="F@nfuryG#n3sis@fury"
 GAS_PRICES="0.000025utfury"
-CHAIN_ID="export"
+CHAIN_ID="gridiron_4200-3"
 NODE="(fury tendermint show-node-id)"
 
-fury init gridiron-1 --chain-id $CHAIN_ID --staking-bond-denom utfury
+fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 
 
 # Note: Download the genesis file
-curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/gridironzone/gridtestnet-1/master/testnet-1/genesis.json
+curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys add gridiron
+yes $PASSWORD | fury keys import gridiron
 
 
 # Set staking token (both bond_denom and mint_denom)
