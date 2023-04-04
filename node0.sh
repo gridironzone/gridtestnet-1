@@ -7,6 +7,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 sudo apt-get -y install dnf
+sudo apt install curl nano ca-certificates tar git jq gcc-c++ gcc-toolset-9 openssl-devel musl-devel musl-gcc gmp-devel perl python3 moreutils wget nodejs make hostname procps-ng pass libsecret pinentry crudini cmake
 
 
 #Setting up constants
