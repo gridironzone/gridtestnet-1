@@ -5,7 +5,9 @@ sudo apt update
 sudo apt upgrade
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt install git build-essential ufw curl jq snapd wget dnf --yes
+sudo apt install git build-essential ufw curl jq snapd wget --yes
+sudo apt-get -y install dnf
+
 
 #Setting up constants
 FURY_HOME=$HOME/.fury
