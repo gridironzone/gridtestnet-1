@@ -1,6 +1,6 @@
 
 #Setting up constants
-
+mv ./build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury

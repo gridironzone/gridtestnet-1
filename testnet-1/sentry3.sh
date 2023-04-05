@@ -1,6 +1,6 @@
 
 #Setting up constants
-
+mv ./build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury
@@ -150,7 +150,7 @@ echo "The Gridiron Chain can now be started - Congratulation on being part of th
 
 
 #Setting up constants
-
+mv ./build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury
