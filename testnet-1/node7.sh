@@ -1,7 +1,4 @@
-
 #Setting up constants
-
-
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury
 COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
@@ -9,14 +6,12 @@ COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
 FURY_VERSION="v1.0.1"
 COSMOVISOR_VERSION="cosmovisor-v1.0.1"
 
-echo "-----------setting constants---------------"
 mkdir -p $FURY_HOME
 mkdir -p $FURY_HOME/src
 mkdir -p $FURY_HOME/bin
 mkdir -p $FURY_HOME/logs
 mkdir -p $FURY_HOME/cosmovisor/genesis/bin
 mkdir -p $FURY_HOME/cosmovisor/upgrades/
-
 
 echo "-----------setting environment settings---------------"
 sudo apt update
@@ -26,16 +21,6 @@ sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 
-set -eu
-
-echo "--------------installing golang---------------------------"
-curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
-tar -C $HOME -xzf $HOME/go.tar.gz
-rm $HOME/go.tar.gz
-export PATH=$PATH:$HOME/go/bin
-export GOPATH=$HOME/go
-echo "export GOPATH=$HOME/go" >> ~/.bashrc
-go version
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -43,16 +28,20 @@ echo "--------------installing homebrew---------------------------"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew install gcc
+brew install go@1.19.1
+echo 'export PATH="/home/linuxbrew/.linuxbrew/opt/go@1.19/bin:$PATH"' >> ~/.profile
+go version
+
 
 
 echo "----------------------installing fury---------------"
-git clone https://github.com/fanfury-sports/fanfury -b fanfury
+git clone -b fanfury https://github.com/fanfury-sports/fanfury.git 
 cd fanfury
 make build && make install
-mv ~/fanfury/build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
+mv fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 echo "-------------------installing cosmovisor-----------------------"
-git clone -b $COSMOVISOR_VERSION https://github.com/onomyprotocol/onomy-sdk $COSMOVISOR_SRC
+git clone -b $COSMOVISOR_VERSION https://github.com/furyprotocol/fury-sdk $COSMOVISOR_SRC
 cd $COSMOVISOR_SRC
 make cosmovisor
 cp cosmovisor/cosmovisor $FURY_HOME/bin/cosmovisor
@@ -69,6 +58,7 @@ echo "export PATH=$PATH" >> ~/.bashrc
 echo "export DAEMON_HOME=$FURY_HOME/" >> ~/.bashrc
 echo "export DAEMON_NAME=fury" >> ~/.bashrc
 echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bashrc
+
 
 
 # Note: Download the keys files
@@ -90,7 +80,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import node7 ~/keys/node7.key
+yes $PASSWORD | fury keys import node8 ~/keys/node8.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -124,7 +114,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx node7 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx node8 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
