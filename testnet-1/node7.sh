@@ -21,7 +21,13 @@ sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 
+gcc_source="/opt/rh/gcc-toolset-9/enable"
+if test -f $gcc_source; then
+   source gcc_source
+fi
+
 set -eu
+
 
 echo "--------------installing golang---------------------------"
 curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
@@ -31,6 +37,7 @@ export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
+
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
