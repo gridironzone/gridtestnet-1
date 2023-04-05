@@ -147,7 +147,6 @@ sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_commit = "5s"/timeout_commit = "1s"/g" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/config/config.toml
 
-git clone https://furynet/
 
 cp -r ~/.fury/config/gentx ~/gridtestnet-1/gentx-node1
 
@@ -169,9 +168,9 @@ echo "
 ###                    	to the $HOME/gridtestnet-1 repo		
 ###                                											
 ###                     Please DO NOT forget to send a  						
-###                          PR to the repo below 
-###                     to ensure your participation!							            											
-###                            											
+###                          PR to this repo to 
+###                       ensure your participation!							            											
+###                                											
 ###                                											
 ###                                											
 ###
