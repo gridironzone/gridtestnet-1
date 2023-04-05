@@ -29,11 +29,14 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 set -eu
 
 echo "--------------installing golang---------------------------"
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
+tar -C $HOME -xzf $HOME/go.tar.gz
+rm $HOME/go.tar.gz
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
+
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -88,7 +91,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import GridironGuardian-2 ~/keys/GridironGuardian-2.key
+yes $PASSWORD | fury keys import genBrooklyn ~/keys/genBrooklyn.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -122,7 +125,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx GridironGuardian-2 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx genBrooklyn 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
