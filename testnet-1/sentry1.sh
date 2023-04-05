@@ -26,14 +26,22 @@ sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 
+gcc_source="/opt/rh/gcc-toolset-9/enable"
+if test -f $gcc_source; then
+   source gcc_source
+fi
+
 set -eu
 
 echo "--------------installing golang---------------------------"
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+curl https://dl.google.com/go/go1.16.4.linux-amd64.tar.gz --output $HOME/go.tar.gz
+tar -C $HOME -xzf $HOME/go.tar.gz
+rm $HOME/go.tar.gz
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
+
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -48,6 +56,7 @@ git clone https://github.com/fanfury-sports/fanfury -b fanfury
 cd fanfury
 make build && make install
 mv ~/fanfury/build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
+
 
 echo "-------------------installing cosmovisor-----------------------"
 git clone -b $COSMOVISOR_VERSION https://github.com/onomyprotocol/onomy-sdk $COSMOVISOR_SRC
