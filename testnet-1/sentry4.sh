@@ -29,9 +29,7 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 set -eu
 
 echo "--------------installing golang---------------------------"
-curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
-tar -C $HOME -xzf $HOME/go.tar.gz
-rm $HOME/go.tar.gz
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
@@ -147,9 +145,7 @@ sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_commit = "5s"/timeout_commit = "1s"/g" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/config/config.toml
 
-cp -r ~/.fury/config/gentx ~/gridtestnet-1/gentx-node1
 
-sudo rm -rf ~/gridtestnet-1/testnet-1 ~/keys ~/fanfury 
 
 echo "
 ###############################################################################
@@ -178,4 +174,3 @@ echo "
 ###############################################################################
 ###############################################################################
 "
-
