@@ -33,7 +33,7 @@ echo "--------------installing golang---------------------------"
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
-echo "source /home/adrian/.bashrc" >> ~/.bashrc
+(echo; echo 'eval "$(/home/adrian/.go)"') >> /home/adrian/.profile
 go version
 
 
