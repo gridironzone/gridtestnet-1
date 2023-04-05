@@ -1,4 +1,7 @@
+
 #Setting up constants
+mv ./build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
+
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury
 COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
@@ -6,6 +9,7 @@ COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
 FURY_VERSION="v1.0.1"
 COSMOVISOR_VERSION="cosmovisor-v1.0.1"
 
+echo "-----------setting constants---------------"
 mkdir -p $FURY_HOME
 mkdir -p $FURY_HOME/src
 mkdir -p $FURY_HOME/bin
@@ -13,37 +17,37 @@ mkdir -p $FURY_HOME/logs
 mkdir -p $FURY_HOME/cosmovisor/genesis/bin
 mkdir -p $FURY_HOME/cosmovisor/upgrades/
 
-echo "-----------installing dependencies---------------"
-sudo dnf -y update
-sudo dnf -y copr enable ngompa/musl-libc
-sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-sudo dnf -y install subscription-manager
-sudo subscription-manager config --rhsm.manage_repos=1
-sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
-sudo dnf makecache --refresh
-sudo dnf -y --skip-broken install curl nano ca-certificates tar git jq gcc-c++ gcc-toolset-9 openssl-devel musl-devel musl-gcc gmp-devel perl python3 moreutils wget nodejs make hostname procps-ng pass libsecret pinentry crudini cmake
 
-gcc_source="/opt/rh/gcc-toolset-9/enable"
-if test -f $gcc_source; then
-   source gcc_source
-fi
+echo "-----------setting environment settings---------------"
+sudo apt update
+sudo apt upgrade
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install git build-essential ufw curl jq snapd wget --yes
+
 
 set -eu
 
 echo "--------------installing golang---------------------------"
-curl https://dl.google.com/go/go1.16.4.linux-amd64.tar.gz --output $HOME/go.tar.gz
-tar -C $HOME -xzf $HOME/go.tar.gz
-rm $HOME/go.tar.gz
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
 
+echo "--------------installing homebrew---------------------------"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+brew install gcc
+
+
 echo "----------------------installing fury---------------"
-git clone -b furyhub-1 https://github.com/fanfury-sports/fanfury.git $FURY_SRC
-cd $FURY_SRC
-make build
-mv fury $FURY_HOME/cosmovisor/genesis/bin/fury
+git clone https://github.com/fanfury-sports/fanfury -b fanfury
+cd fanfury
+make build && make install
+mv ~/fanfury/build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 echo "-------------------installing cosmovisor-----------------------"
 git clone -b $COSMOVISOR_VERSION https://github.com/onomyprotocol/onomy-sdk $COSMOVISOR_SRC
