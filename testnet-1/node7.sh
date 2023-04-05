@@ -26,21 +26,19 @@ sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 
-set -eu
-
-echo "--------------installing golang---------------------------"
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
-export PATH=$PATH:$HOME/go/bin
-export GOPATH=$HOME/go
-echo "export GOPATH=$HOME/go" >> ~/.bashrc
-go version
-
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew install gcc
+
+set -eu
+
+echo "--------------installing golang---------------------------"
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+echo "source /home/adrian/.go" >> ~/.bashrc
+go version
 
 
 echo "----------------------installing fury---------------"
