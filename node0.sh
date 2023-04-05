@@ -46,7 +46,7 @@ brew install gcc
 echo "----------------------installing fury---------------"
 git clone https://github.com/fanfury-sports/fanfury -b fanfury
 cd fanfury
-make install
+make build
 mv ~/fanfury/build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 echo "-------------------installing cosmovisor-----------------------"
