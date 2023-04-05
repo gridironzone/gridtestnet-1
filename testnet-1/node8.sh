@@ -1,4 +1,7 @@
+
 #Setting up constants
+
+
 FURY_HOME=$HOME/.fury
 FURY_SRC=$FURY_HOME/src/fury
 COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
@@ -6,12 +9,14 @@ COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
 FURY_VERSION="v1.0.1"
 COSMOVISOR_VERSION="cosmovisor-v1.0.1"
 
+echo "-----------setting constants---------------"
 mkdir -p $FURY_HOME
 mkdir -p $FURY_HOME/src
 mkdir -p $FURY_HOME/bin
 mkdir -p $FURY_HOME/logs
 mkdir -p $FURY_HOME/cosmovisor/genesis/bin
 mkdir -p $FURY_HOME/cosmovisor/upgrades/
+
 
 echo "-----------setting environment settings---------------"
 sudo apt update
@@ -21,25 +26,34 @@ sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 
+set -eu
+
+echo "--------------installing golang---------------------------"
+curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
+tar -C $HOME -xzf $HOME/go.tar.gz
+rm $HOME/go.tar.gz
+export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go
+echo "export GOPATH=$HOME/go" >> ~/.bashrc
+go version
+
+
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew install gcc
-brew install go@1.19.1
-go version
-
 
 
 echo "----------------------installing fury---------------"
-git clone -b fanfury https://github.com/fanfury-sports/fanfury.git 
+git clone https://github.com/fanfury-sports/fanfury -b fanfury
 cd fanfury
 make build && make install
-mv fury $FURY_HOME/cosmovisor/genesis/bin/fury
+mv ~/fanfury/build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
 
 echo "-------------------installing cosmovisor-----------------------"
-git clone -b $COSMOVISOR_VERSION https://github.com/furyprotocol/fury-sdk $COSMOVISOR_SRC
+git clone -b $COSMOVISOR_VERSION https://github.com/onomyprotocol/onomy-sdk $COSMOVISOR_SRC
 cd $COSMOVISOR_SRC
 make cosmovisor
 cp cosmovisor/cosmovisor $FURY_HOME/bin/cosmovisor
@@ -56,7 +70,6 @@ echo "export PATH=$PATH" >> ~/.bashrc
 echo "export DAEMON_HOME=$FURY_HOME/" >> ~/.bashrc
 echo "export DAEMON_NAME=fury" >> ~/.bashrc
 echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bashrc
-
 
 
 # Note: Download the keys files
