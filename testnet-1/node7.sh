@@ -90,7 +90,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import node8 ~/keys/node8.key
+yes $PASSWORD | fury keys import node7 ~/keys/node7.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -124,7 +124,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx node8 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx node7 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
