@@ -1,20 +1,72 @@
-#!/usr/bin/env bash
 
-# Note: Download updates to the VM
+#Setting up constants
+mv ./build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
+
+FURY_HOME=$HOME/.fury
+FURY_SRC=$FURY_HOME/src/fury
+COSMOVISOR_SRC=$FURY_HOME/src/cosmovisor
+
+FURY_VERSION="v1.0.1"
+COSMOVISOR_VERSION="cosmovisor-v1.0.1"
+
+echo "-----------setting constants---------------"
+mkdir -p $FURY_HOME
+mkdir -p $FURY_HOME/src
+mkdir -p $FURY_HOME/bin
+mkdir -p $FURY_HOME/logs
+mkdir -p $FURY_HOME/cosmovisor/genesis/bin
+mkdir -p $FURY_HOME/cosmovisor/upgrades/
+
+
+echo "-----------setting environment settings---------------"
 sudo apt update
 sudo apt upgrade
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
-# Note: Download go@1.19.1
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
-(echo; echo 'eval "$(/home/.go)"') >> /home/adrian/.profile
 
-# Note: Download Homebrew
+set -eu
+
+echo "--------------installing golang---------------------------"
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go
+echo "export GOPATH=$HOME/go" >> ~/.bashrc
+go version
+
+echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/adrian/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+brew install gcc
+
+
+echo "----------------------installing fury---------------"
+git clone https://github.com/fanfury-sports/fanfury -b fanfury
+cd fanfury
+make build && make install
+mv ~/fanfury/build/fury $FURY_HOME/cosmovisor/genesis/bin/fury
+
+echo "-------------------installing cosmovisor-----------------------"
+git clone -b $COSMOVISOR_VERSION https://github.com/onomyprotocol/onomy-sdk $COSMOVISOR_SRC
+cd $COSMOVISOR_SRC
+make cosmovisor
+cp cosmovisor/cosmovisor $FURY_HOME/bin/cosmovisor
+
+echo "-------------------adding binaries to path-----------------------"
+chmod +x $FURY_HOME/bin/*
+export PATH=$PATH:$FURY_HOME/bin
+chmod +x $FURY_HOME/cosmovisor/genesis/bin/*
+export PATH=$PATH:$FURY_HOME/cosmovisor/genesis/bin
+
+echo "export PATH=$PATH" >> ~/.bashrc
+
+# set the cosmovisor environments
+echo "export DAEMON_HOME=$FURY_HOME/" >> ~/.bashrc
+echo "export DAEMON_NAME=fury" >> ~/.bashrc
+echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bashrc
 
 
 # Note: Download the keys files
@@ -22,13 +74,6 @@ git clone https://github.com/gridironzone/gridtestnet-1
 cd gridtestnet-1/testnet-1
 mv keys ~/
 cd 
-
-# Note: Download and install the Gridiron Binary
-git clone https://github.com/fanfury-sports/fanfury -b fanfury
-cd fanfury
-make install
-cd ..
-
 rm -rf ~/.fury
 
 PASSWORD="F@nfuryG#n3sis@fury"
@@ -43,7 +88,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import genBuffallo ~/keys/genBuffallo.key
+yes $PASSWORD | fury keys import genSF ~/keys/genSF.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -55,7 +100,7 @@ FROM="\"mint_denom\": \"stake\""
 TO="\"mint_denom\": \"$STAKING_TOKEN\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-# Set node3 token (both for gov min deposit and crisis constant node3)
+# Set fury token (both for gov min deposit and crisis constant fury)
 FEE_TOKEN="utfury"
 FROM="\"stake\""
 TO="\"$FEE_TOKEN\""
@@ -67,7 +112,7 @@ FROM="\"reserved_bond_tokens\": \[\]"
 TO="\"reserved_bond_tokens\": \[$RESERVED_BOND_TOKENS\]"
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-# Set min-gas-prices (using node3 token)
+# Set min-gas-prices (using fury token)
 FROM="minimum-gas-prices = \"\""
 TO="minimum-gas-prices = \"0.000002$FEE_TOKEN\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/app.toml
@@ -77,7 +122,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx genBuffallo 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx genSF 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
