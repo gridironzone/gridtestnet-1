@@ -30,9 +30,7 @@ set -eu
 
 
 echo "--------------installing golang---------------------------"
-curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
-tar -C $HOME -xzf $HOME/go.tar.gz
-rm $HOME/go.tar.gz
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
