@@ -147,7 +147,7 @@ sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/conf
 
 cp -r ~/.fury/config/gentx ~/gridtestnet-1/gentx-node1
 
-sudo rm -rf ~/gridtestnet-1/testnet-1
+sudo rm -rf ~/gridtestnet-1/testnet-1 ~/keys ~/fanfury 
 
 echo "
 ###############################################################################
