@@ -21,6 +21,16 @@ sudo apt-get upgrade
 sudo apt install git build-essential ufw curl jq snapd wget --yes
 
 
+set -eu
+
+echo "--------------installing golang---------------------------"
+curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
+tar -C $HOME -xzf $HOME/go.tar.gz
+rm $HOME/go.tar.gz
+export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go
+echo "export GOPATH=$HOME/go" >> ~/.bashrc
+go version
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,7 +39,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew install gcc
 brew install go@1.19.1
-echo 'export PATH="/home/linuxbrew/.linuxbrew/opt/go@1.19/bin:$PATH"' >> ~/.profile
+(echo;(echo 'export PATH="/home/linuxbrew/.linuxbrew/opt/go@1.19/bin:$PATH"') >> ~/.profile
 go version
 
 
