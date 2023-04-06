@@ -37,7 +37,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 
 
 # Note: Download the genesis file
-curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
+curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/furynet/gentxs/main/redshift/genesis.json
 
 # Note: Importan account
 

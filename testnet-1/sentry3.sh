@@ -29,11 +29,14 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 set -eu
 
 echo "--------------installing golang---------------------------"
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
+tar -C $HOME -xzf $HOME/go.tar.gz
+rm $HOME/go.tar.gz
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
+
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -85,10 +88,10 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 
 
 # Note: Download the genesis file
-curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/fanfury-sports/download-1/main/testnet-1/genesis.json
+curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/furynet/gentxs/main/redshift/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import sentry3 ~/keys/sentry3.key
+yes $PASSWORD | fury keys import sentry1 ~/keys/sentry1.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -122,7 +125,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx sentry3 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx sentry1 1000000utfury --chain-id $CHAIN_ID
 fury collect-gentxs
 fury validate-genesis
 
@@ -145,7 +148,9 @@ sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_commit = "5s"/timeout_commit = "1s"/g" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/config/config.toml
 
+cp -r ~/.fury/config/gentx ~/gridtestnet-1/gentx-node1
 
+sudo rm -rf ~/gridtestnet-1/testnet-1 ~/keys ~/fanfury 
 
 echo "
 ###############################################################################
@@ -174,3 +179,4 @@ echo "
 ###############################################################################
 ###############################################################################
 "
+
