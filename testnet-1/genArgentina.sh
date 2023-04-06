@@ -125,8 +125,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx genArgentina 1000000utfury --chain-id $CHAIN_ID
-fury collect-gentxs
+yes $PASSWORD | fury gentx genArgentina 120000000000utfury --chain-id $CHAIN_ID
 fury validate-genesis
 
 # Enable REST API

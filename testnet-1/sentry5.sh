@@ -91,7 +91,7 @@ fury init gridiron_4200-3 --chain-id $CHAIN_ID --staking-bond-denom utfury
 curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/furynet/gentxs/main/redshift/genesis.json
 
 # Note: Add an account
-yes $PASSWORD | fury keys import sentry3 ~/keys/sentry3.key
+yes $PASSWORD | fury keys import sentry5 ~/keys/sentry5.key
 
 
 # Set staking token (both bond_denom and mint_denom)
@@ -125,7 +125,7 @@ FROM="\"voting_period\": \"172800s\""
 TO="\"voting_period\": \"$MAX_VOTING_PERIOD\""
 sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/genesis.json
 
-yes $PASSWORD | fury gentx sentry3 1000000utfury --chain-id $CHAIN_ID
+yes $PASSWORD | fury gentx sentry5 1000000utfury --chain-id $CHAIN_ID
 fury validate-genesis
 
 # Enable REST API
