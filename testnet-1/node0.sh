@@ -29,11 +29,14 @@ sudo apt install git build-essential ufw curl jq snapd wget --yes
 set -eu
 
 echo "--------------installing golang---------------------------"
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.19.1
+curl https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz --output $HOME/go.tar.gz
+tar -C $HOME -xzf $HOME/go.tar.gz
+rm $HOME/go.tar.gz
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 go version
+
 
 echo "--------------installing homebrew---------------------------"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -145,6 +148,35 @@ sed -i -e "s/$FROM/$TO/" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_commit = "5s"/timeout_commit = "1s"/g" "$HOME"/.fury/config/config.toml
 sed -i -e "s/timeout_propose = "3s"/timeout_propose = "1s"/g" "$HOME"/.fury/config/config.toml
 
+cp -r ~/.fury/config/gentx ~/gridtestnet-1/gentx-node1
 
-echo "The Gridiron Chain can now be started - Congratulation on being part of the Genesis!!"
+sudo rm -rf ~/gridtestnet-1/testnet-1 ~/keys ~/fanfury 
+
+echo "
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+###                                											
+###                                											
+###                    
+###                                											                                											
+###                     ~!!~  Congratulations  ~!!~
+###             The Gridiron Chain is now ready to be started!!                  						                  											
+###                                	
+###                  A copy of your gentx file has been copied               											
+###                    	to the $HOME/gridtestnet-1 repo		
+###                                											
+###                     Please DO NOT forget to send a  						
+###                          PR to this repo to 
+###                       ensure your participation!							            											
+###                                											
+###                                											
+###                                											
+###
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+"
 
