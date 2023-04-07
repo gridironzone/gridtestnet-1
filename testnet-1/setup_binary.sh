@@ -49,9 +49,9 @@ fi
 fury init "$MONIKER_NAME" --chain-id="$CHAIN_ID"
 fury tendermint unsafe-reset-all
 
-fury keys add "$KEY_NAME" --keyring-backend test
-fury add-genesis-account "$(fury keys show "$KEY_NAME" -a --keyring-backend test)" "$TOKEN_AMOUNT"
-fury gentx "$KEY_NAME" "$STAKING_AMOUNT" --chain-id "$CHAIN_ID" --keyring-backend test
+fury keys add "$KEY_NAME" --keyring-backend os
+fury add-genesis-account "$(fury keys show "$KEY_NAME" -a --keyring-backend os)" "$TOKEN_AMOUNT"
+fury gentx "$KEY_NAME" "$STAKING_AMOUNT" --chain-id "$CHAIN_ID" --keyring-backend os
 
 fury collect-gentxs
 
@@ -59,21 +59,21 @@ fury collect-gentxs
 # ---------------------------------------------------------------------------- #
 #                              Set configurations                              #
 # ---------------------------------------------------------------------------- #
-sed -i'' -e "/\[rpc\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$SETTLEMENT_ADDR\"/" "$TENDERMINT_CONFIG_FILE"
-sed -i'' -e "/\[p2p\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$P2P_ADDRESS\"/" "$TENDERMINT_CONFIG_FILE"
+sed -ie "/\[rpc\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$SETTLEMENT_ADDR\"/" "$TENDERMINT_CONFIG_FILE"
+sed -ie "/\[p2p\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$P2P_ADDRESS\"/" "$TENDERMINT_CONFIG_FILE"
 sed  -i '' -e "s/^persistent_peers =.*/persistent_peers = \"$HUB_PEERS\"/" "$TENDERMINT_CONFIG_FILE"
 
-sed -i'' -e "/\[grpc\]/,+6 s/address *= .*/address = \"$GRPC_ADDRESS\"/" "$APP_CONFIG_FILE"
-sed -i'' -e "/\[grpc-web\]/,+7 s/address *= .*/address = \"$GRPC_WEB_ADDRESS\"/" "$APP_CONFIG_FILE"
-sed -i'' -e "s/^chain-id *= .*/chain-id = \"$CHAIN_ID\"/" "$CLIENT_CONFIG_FILE"
+sed -ie "/\[grpc\]/,+6 s/address *= .*/address = \"$GRPC_ADDRESS\"/" "$APP_CONFIG_FILE"
+sed -ie "/\[grpc-web\]/,+7 s/address *= .*/address = \"$GRPC_WEB_ADDRESS\"/" "$APP_CONFIG_FILE"
+sed -ie "s/^chain-id *= .*/chain-id = \"$CHAIN_ID\"/" "$CLIENT_CONFIG_FILE"
 
-sed -i'' -e "s/^node *= .*/node = \"tcp:\/\/$SETTLEMENT_ADDR\"/" "$CLIENT_CONFIG_FILE"
-sed -i'' -e 's/bond_denom": ".*"/bond_denom": "utfury"/' "$GENESIS_FILE"
-sed -i'' -e 's/mint_denom": ".*"/mint_denom": "utfury"/' "$GENESIS_FILE"
+sed -ie "s/^node *= .*/node = \"tcp:\/\/$SETTLEMENT_ADDR\"/" "$CLIENT_CONFIG_FILE"
+sed -ie 's/bond_denom": ".*"/bond_denom": "utfury"/' "$GENESIS_FILE"
+sed -ie 's/mint_denom": ".*"/mint_denom": "utfury"/' "$GENESIS_FILE"
 
-sed -i'' -e 's/^minimum-gas-prices *= .*/minimum-gas-prices = "0utfury"/' "$APP_CONFIG_FILE"
-sed -i'' -e '/\[api\]/,+3 s/enable *= .*/enable = true/' "$APP_CONFIG_FILE"
-sed -i'' -e "/\[api\]/,+9 s/address *= .*/address = \"tcp:\/\/$API_ADDRESS\"/" "$APP_CONFIG_FILE"
+sed -ie 's/^minimum-gas-prices *= .*/minimum-gas-prices = "0utfury"/' "$APP_CONFIG_FILE"
+sed -ie '/\[api\]/,+3 s/enable *= .*/enable = true/' "$APP_CONFIG_FILE"
+sed -ie "/\[api\]/,+9 s/address *= .*/address = \"tcp:\/\/$API_ADDRESS\"/" "$APP_CONFIG_FILE"
 
 if [ -n "$UNSAFE_CORS" ]; then
   echo "Setting CORS"
