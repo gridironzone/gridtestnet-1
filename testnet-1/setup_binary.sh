@@ -19,8 +19,8 @@ GRPC_WEB_ADDRESS=${GRPC_WEB_ADDRESS:-"0.0.0.0:8091"}
 API_ADDRESS=${API_ADDRESS:-"0.0.0.0:1317"}
 UNSAFE_CORS=${UNSAFE_CORS:-""}
 
-TOKEN_AMOUNT=${TOKEN_AMOUNT:-"1000000000000utfury"} #1M DYM (1e6dym == 1e12utfury)
-STAKING_AMOUNT=${STAKING_AMOUNT:-"670000000000utfury"} #67% is staked (inflation goal)
+TOKEN_AMOUNT=${TOKEN_AMOUNT:-"1000000000000ufury"} #1M DYM (1e6dym == 1e12ufury)
+STAKING_AMOUNT=${STAKING_AMOUNT:-"670000000000ufury"} #67% is staked (inflation goal)
 
 # Validate fury binary exists
 export PATH=$PATH:$HOME/go/bin
@@ -59,27 +59,27 @@ fury collect-gentxs
 # ---------------------------------------------------------------------------- #
 #                              Set configurations                              #
 # ---------------------------------------------------------------------------- #
+sed -i'' -e "/\[rpc\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$SETTLEMENT_ADDR\"/" "$TENDERMINT_CONFIG_FILE"
+sed -i'' -e "/\[p2p\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$P2P_ADDRESS\"/" "$TENDERMINT_CONFIG_FILE"
+sed  -i '' -e "s/^persistent_peers =.*/persistent_peers = \"$HUB_PEERS\"/" "$TENDERMINT_CONFIG_FILE"
 
-sed -i -e '/\[p2p\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$P2P_ADDRESS\"/' "$TENDERMINT_CONFIG_FILE"
-sed  -i -e 's/^persistent_peers =.*/persistent_peers = \"$HUB_PEERS\"/' "$TENDERMINT_CONFIG_FILE"
+sed -i'' -e "/\[grpc\]/,+6 s/address *= .*/address = \"$GRPC_ADDRESS\"/" "$APP_CONFIG_FILE"
+sed -i'' -e "/\[grpc-web\]/,+7 s/address *= .*/address = \"$GRPC_WEB_ADDRESS\"/" "$APP_CONFIG_FILE"
+sed -i'' -e "s/^chain-id *= .*/chain-id = \"$CHAIN_ID\"/" "$CLIENT_CONFIG_FILE"
 
-sed -i -e '/\[grpc\]/,+6 s/address *= .*/address = \"$GRPC_ADDRESS\"/' "$APP_CONFIG_FILE"
-sed -i -e '/\[grpc-web\]/,+7 s/address *= .*/address = \"$GRPC_WEB_ADDRESS\"/' "$APP_CONFIG_FILE"
-sed -i -e 's/^chain-id *= .*/chain-id = \"$CHAIN_ID\"/' "$CLIENT_CONFIG_FILE"
+sed -i'' -e "s/^node *= .*/node = \"tcp:\/\/$SETTLEMENT_ADDR\"/" "$CLIENT_CONFIG_FILE"
+sed -i'' -e 's/bond_denom": ".*"/bond_denom": "ufury"/' "$GENESIS_FILE"
+sed -i'' -e 's/mint_denom": ".*"/mint_denom": "ufury"/' "$GENESIS_FILE"
 
-sed -i -e 's/^node *= .*/node = \"tcp:\/\/$SETTLEMENT_ADDR\"/' "$CLIENT_CONFIG_FILE"
-sed -i -e 's/bond_denom": ".*"/bond_denom": "utfury"/' "$GENESIS_FILE"
-sed -i -e 's/mint_denom": ".*"/mint_denom": "utfury"/' "$GENESIS_FILE"
-
-sed -i -e 's/^minimum-gas-prices *= .*/minimum-gas-prices = "0utfury"/' "$APP_CONFIG_FILE"
-sed -i -e '/\[api\]/,+3 s/enable *= .*/enable = true/' "$APP_CONFIG_FILE"
-sed -i -e '/\[api\]/,+9 s/address *= .*/address = \"tcp:\/\/$API_ADDRESS\"/' "$APP_CONFIG_FILE"
+sed -i'' -e 's/^minimum-gas-prices *= .*/minimum-gas-prices = "0ufury"/' "$APP_CONFIG_FILE"
+sed -i'' -e '/\[api\]/,+3 s/enable *= .*/enable = true/' "$APP_CONFIG_FILE"
+sed -i'' -e "/\[api\]/,+9 s/address *= .*/address = \"tcp:\/\/$API_ADDRESS\"/" "$APP_CONFIG_FILE"
 
 if [ -n "$UNSAFE_CORS" ]; then
   echo "Setting CORS"
-  sed -i -e 's/enabled-unsafe-cors.*$/enabled-unsafe-cors = true/' "$APP_CONFIG_FILE"
-  sed -i -e 's/enable-unsafe-cors.*$/enabled-unsafe-cors = true/' "$APP_CONFIG_FILE"
-  sed -i -e 's/cors_allowed_origins.*$/cors_allowed_origins = ["*"]/' "$TENDERMINT_CONFIG_FILE"
+  sed -ie 's/enabled-unsafe-cors.*$/enabled-unsafe-cors = true/' "$APP_CONFIG_FILE"
+  sed -ie 's/enable-unsafe-cors.*$/enabled-unsafe-cors = true/' "$APP_CONFIG_FILE"
+  sed -ie 's/cors_allowed_origins.*$/cors_allowed_origins = ["*"]/' "$TENDERMINT_CONFIG_FILE"
 fi
 
 
