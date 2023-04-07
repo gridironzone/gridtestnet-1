@@ -61,7 +61,7 @@ fury collect-gentxs
 # ---------------------------------------------------------------------------- #
 
 sed -i -e '/\[p2p\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$P2P_ADDRESS\"/' "$TENDERMINT_CONFIG_FILE"
-sed  -i '' -e 's/^persistent_peers =.*/persistent_peers = \"$HUB_PEERS\"/' "$TENDERMINT_CONFIG_FILE"
+sed  -i -e 's/^persistent_peers =.*/persistent_peers = \"$HUB_PEERS\"/' "$TENDERMINT_CONFIG_FILE"
 
 sed -i -e '/\[grpc\]/,+6 s/address *= .*/address = \"$GRPC_ADDRESS\"/' "$APP_CONFIG_FILE"
 sed -i -e '/\[grpc-web\]/,+7 s/address *= .*/address = \"$GRPC_WEB_ADDRESS\"/' "$APP_CONFIG_FILE"
