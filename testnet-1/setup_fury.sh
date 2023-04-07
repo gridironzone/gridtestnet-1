@@ -43,18 +43,6 @@ fi
 fury init "$MONIKER_NAME" --chain-id="$CHAIN_ID"
 fury tendermint unsafe-reset-all
 
-# ...................................................... #
-# .................. Fetch genesis ..................... #
-# ...................................................... #
-
-curl -s "$CHAIN_REPO/$CHAIN_ID/genesis.json" >genesis.json
-if grep -q "404: Not Found" "genesis.json"; then
-  rm genesis.json
-  echo "Can't download genesis file"
-  rm -rf "$DATA_DIRECTORY"
-  exit 1
-fi
-mv genesis.json "$CONFIG_DIRECTORY/"
 
 # ...................................................... #
 # ............... Update configurations ................ #
