@@ -59,7 +59,7 @@ fury collect-gentxs
 # ---------------------------------------------------------------------------- #
 #                              Set configurations                              #
 # ---------------------------------------------------------------------------- #
-sed -i -e '/\[rpc\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$SETTLEMENT_ADDR\"/' "$TENDERMINT_CONFIG_FILE"
+
 sed -i -e '/\[p2p\]/,+3 s/laddr *= .*/laddr = \"tcp:\/\/$P2P_ADDRESS\"/' "$TENDERMINT_CONFIG_FILE"
 sed  -i '' -e 's/^persistent_peers =.*/persistent_peers = \"$HUB_PEERS\"/' "$TENDERMINT_CONFIG_FILE"
 
